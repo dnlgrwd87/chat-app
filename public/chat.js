@@ -28,12 +28,13 @@ socket.on('chat', data => {
     let alignStyle = 'margin-left: auto';
 
     let handlePrefix = `${data.handle}: `;
+    let style = 'border-top: 1px solid #e9e9e9;';
     const lastEntry = output.children[output.children.length - 1];
-    console.log(lastEntry);
 
     if (lastEntry) {
         if (lastEntry.classList[0] === data.handle.toLowerCase()) {
             handlePrefix = '';
+            style = '';
         }
     }
 
@@ -43,7 +44,7 @@ socket.on('chat', data => {
     }
 
     feedback.innerHTML = '';
-    output.innerHTML += `<p class="${data.handle.toLowerCase()}">
+    output.innerHTML += `<p class="${data.handle.toLowerCase()}" style="${style}">
         <span style="${alignStyle}">
             <strong>${handlePrefix}</strong> 
             ${data.message}
